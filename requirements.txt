@@ -1,0 +1,8 @@
+Pillow
+pillow-heif
+numpy
+qrcode
+reportlab
+Flask
+requests
+black

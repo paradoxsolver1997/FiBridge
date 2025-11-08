@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Phone Sign</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Remote Draw & Sign</h1>
+  <div id="toolbar">
+    <button id="homeBtn" class="btn" onclick="location.href='index.html'">Home</button>
+    <button id="refreshBtn" class="btn" onclick="location.reload()">Refresh</button>
+  </div>
+  <div id="statusbar">
+    <span id="status">Ready to Draw</span>  
+  </div>
+  <div id="canvasWrap">
+    <canvas id="sigCanvas" width="560" height="300"></canvas>
+  </div>
+  <div id="controlbar">
+    <button id="clearBtn" class="btn">Clear Canvas</button>
+    <button id="doneBtn" class="btn">Push to PC</button>
+  </div>
+  <!-- js script must be at the end of body -->
+  <script src="js/draw.js"></script>
+</body>
+</html>

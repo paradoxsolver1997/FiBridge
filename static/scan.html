@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Remote QR Scan</title>
+  <script src="js/html5-qrcode.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Remote QR Scan</h1>
+  <div id="toolbar">
+    <button id="startBtn" class="btn">Start Scan</button>
+    <button id="homeBtn" class="btn" onclick="location.href='index.html'">Home</button>
+    <button id="refreshBtn" class="btn" onclick="location.reload()">Refresh</button>
+  </div>
+  <div id="statusbar">
+    <span id="status">Ready</span>  
+  </div>
+  <div id="videoWrap">
+    <div id="qr-reader" style="width:340px; margin:auto;"></div>
+  </div>
+  <div id="qrResult"></div>
+  <div id="controlbar" style="display:none;">
+    <button id="pushBtn" disabled>Push</button>
+    <button id="copyBtn" disabled style="color:gray">Copy</button>
+    <button id="openBtn" disabled style="color:gray">Open Link</button>
+  </div>
+  <script src="js/scan.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Share</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>File Fetch</h1>
+    <div id="toolbar">
+    <button id="homeBtn" class="btn" onclick="location.href='index.html'">Home</button>
+    <button id="refreshBtn" class="btn" onclick="location.reload()">Refresh</button>
+  </div>
+  <span id="status">Browse files on <strong>your device</strong></span>
+    <div id="SendFiles" class="container mt-4">
+        <button id="send-photos" class="btn">Browse...</button>
+        <input id="photo-input" type="file" multiple style="display:none">
+        <div id="photo-preview-list" class="mt-3"></div>
+        <div id="uploadBtn">
+    <button id="sendBtn" class="btn" style="display:none;">Send</button>
+        </div>
+    </div>
+    
+    <script src="js/fetch.js"></script>
+</body>
+</html>
