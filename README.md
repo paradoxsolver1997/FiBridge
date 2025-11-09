@@ -9,15 +9,32 @@
   <img src="https://img.shields.io/badge/SSL-self--signed-blue.svg" alt="Self-signed SSL">
 </p>
 
-FiBridge is a local web application for secure and convenient file and data sharing between PC and mobile devices. 🔗📱💻
+FiBridge is a **local** web application for secure and convenient file and data sharing between PC and mobile devices, only using the default browser. 🔗📱💻
 
-## Features ✨
+- Your PC and mobile must be connected to the same network. 
+- **No** USB cable needed. 
+- **No** bluetooth needed. 
+- **No** additional software or app needed. 
+- **No** administrative privileges needed.
+- **No** jailbreak (iOS) or root (Android) required. 🚫🔓
+- **No** privacy exclosure risks!
 
-FiBridge can transfer text, (drawing) images, and files between your PC and mobile device in a fast and convenient way. The main features include:
+Ensuring seamless flow between PC and mobile devices, FiBridge also ease your life by providing the following interesting features:
+
+- Generate logo embedded QR code
+- Scan QR code using your PC, when your want to open the link on PC
+- Sign your name using your finger, instead of mouse, without an apple pencil
+- Send photos from phone to PC without a USB cable
+- Save documents on your phone, using it as a wireless hard drive. This is especially attractive to iPhone users.
+- More to explore...
+
+## Main Functions ✨
+
+FiBridge can transfer text, (drawing) images, and files between your PC and mobile device in a fast and convenient way. It supports most hardware platforms and operating systems, including PC with Windows or Linux, iphone, iPad, and Android devices. The main features include:
 
 ### Text transfer via QR code scanning 📄➡️📱
 
-- **QR Code Generator:** Generate QR codes for text, URLs, or files to share with mobile devices. 🔳
+- **QR Code Generator:** Generate logo-embedded QR codes Locally. No more online QR generators! 🔳
 - **Remote Scan:** Use your phone to scan QR codes and send the result back to your PC. 📲
 
 ### Image transfer via drawing or signing on mobile device 🎨✍️
@@ -36,6 +53,7 @@ FiBridge can transfer text, (drawing) images, and files between your PC and mobi
 - Windows, Linux, or macOS 🖥️
 - Python 3.7 or higher (recommended: Python 3.10+) 🐍
 - pip (Python package manager) 📦
+- (Optional) [Potrace](https://potrace.sourceforge.net/) for saving drawing as vector.
 
 ### Clone & Install ⬇️
 
@@ -60,7 +78,7 @@ python main.py
 
 ### SSL keys Setup 🔐
 
-To enable HTTPS (recommended for security):
+The remote scan requires HTTPS protocol to access cameras. To enable HTTPS (recommended for security):
 
 1. Generate a self-signed certificate using the provided script:
    - On Windows:
@@ -73,6 +91,14 @@ To enable HTTPS (recommended for security):
      ```
 2. The generated `key.pem` and `cert.pem` will be placed in the `configs/` directory. 📁
 3. Update your Flask app configuration to use these certificate files for SSL. 🔒
+
+### Installing Potrace
+
+[Potrace](https://potrace.sourceforge.net/) is a tool that transforms a binary bitmap into vector. It is required for saving drawing or signatures as vectors. Follow the [official guide](https://potrace.sourceforge.net/) to download and install Potrace. 
+
+**Important:** you MUST add the path of the Potrace executable to the `$PATH` environment variable (Windows or Linux) such that the app can find it. If successful, the `Tool Check` panel of the app shows a tick.
+
+If Potrace is not installed, you can still use the other features of FiBridge. You can save drawing or signatures only as bitmaps.
 
 ## File Structure 🗂️
 
