@@ -4,6 +4,16 @@ import logging
 
 
 class SignatureCanvas(tk.Frame):
+
+    @staticmethod
+    def has_alpha(im):
+        """判断PIL图像是否有alpha通道"""
+        return im.mode in ("RGBA", "LA") or (im.mode == "P" and 'transparency' in im.info)
+
+    @staticmethod
+    def has_alpha(im):
+        """判断PIL图像是否有alpha通道"""
+        return im.mode in ("RGBA", "LA") or (im.mode == "P" and 'transparency' in im.info)
     """A widget container that embeds a drawing Canvas and exposes the
     same API used by the rest of the application (start, clear, save...).
     Subclassing tk.Frame ensures callers can use geometry managers like
@@ -135,15 +145,17 @@ class SignatureCanvas(tk.Frame):
         diff = ImageChops.difference(img, bg)
         bbox = diff.getbbox()
         if bbox:
-            return img.crop(bbox)
+            cropped = img.crop(bbox)
+            return cropped
         else:
             return img
 
-    def save(self, save_callback, cropped=False, *args, **kwargs):
+    def save(self, save_callback, cropped=False, transparent=False, *args, **kwargs):
         """
         Generic save method.
         save_callback: Save function, such as save_image_as_bitmap or save_image_as_vector
         cropped: Whether to crop the signature
+        transparent: Whether to save with a transparent background
         Other parameters are passed to save_callback
         """
         img = self.image.copy()
@@ -153,24 +165,25 @@ class SignatureCanvas(tk.Frame):
             or img_cropped.size == (0, 0)
             or not img_cropped.getbbox()
         ):
+            self.log(logging.WARNING, "No signature to save.")
             return None, "No signature to save"
         if cropped:
             img = img_cropped
         try:
-            result = save_callback(img, *args, **kwargs)
+            result = save_callback(img, transparent=transparent, *args, **kwargs)
             filepath, ext = result
             self.is_dirty = False
             self.log(logging.INFO, f"Drawing {ext.upper()} saved to:\n{filepath}")
             return result, None
         except Exception as e:
             self.log(logging.ERROR, f"Saving failed: {str(e)}")
-
             return None, str(e)
 
     def view_in_canvas(self, img):
         """Project the image onto the signature canvas."""
         img = img.resize(self.image.size)
         self.clear()
+        self.start()
         # If logging is needed, the logger can be passed at the call site
         self.image.paste(img)
         imgtk = tk.PhotoImage(img) if not hasattr(img, "tk_image") else img.tk_image
@@ -184,4 +197,4 @@ class SignatureCanvas(tk.Frame):
 
     def log(self, level, msg):
         if self.log_func:
-            self.log_func(level, msg)
+            print(msg)

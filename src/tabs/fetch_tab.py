@@ -99,7 +99,9 @@ class FetchTab(BaseTab):
                 return
             # else: continue loop, let user select again
         for file_name in file_names:
+            print(f"[pull_files] fetching: {file_name}")
             src_file = os.path.join(self.cache_dir, file_name)
+            print(f"[pull_files] src_file: {src_file}")
             if not os.path.exists(src_file):
                 self.log(logging.ERROR, f"File not found in cache: {src_file}")
                 continue

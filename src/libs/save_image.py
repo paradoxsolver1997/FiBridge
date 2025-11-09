@@ -5,7 +5,7 @@ import os
 from src.libs import converter
 from PIL import Image
 
-def save_image_as_vector(img: Image.Image):
+def save_image_as_vector(img: Image.Image, transparent: bool = False):
     """
     Save PIL image as vector format file (SVG/PDF/EPS/PS), auto popup save dialog.
     img: PIL.Image object (cropped/processed)
@@ -15,6 +15,8 @@ def save_image_as_vector(img: Image.Image):
 
     tmp_dir = tempfile.gettempdir()
     tmp_bmp = os.path.join(tmp_dir, f'tmp_sig_{os.getpid()}.bmp')
+    if not transparent:
+        img = img.convert("RGB")  # Discard alpha, background becomes white
     img.convert('L').save(tmp_bmp, format='BMP')
     filetypes = [
         ("SVG files", "*.svg"),

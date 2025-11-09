@@ -7,6 +7,6 @@ openssl x509 -req -days 365 -in cert.csr -signkey key.pem -out cert.pem
 del cert.csr
 
 echo Certificates generated: key.pem, cert.pem
-move key.pem ..\configs\
-move cert.pem ..\configs\
+move key.pem configs\
+move cert.pem configs\
 pause

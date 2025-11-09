@@ -3,3 +3,17 @@ body { font-family: Segoe UI, Arial, sans-serif; text-align: center; margin-top:
 .btn:hover { background: #357ABD; }
 #canvasWrap { flex:1; display:flex; align-items:center; justify-content:center; background:#ddd }
 canvas { background: white; touch-action: none; border:1px solid #999 }
+
+#file-list {
+  margin: 0 auto;
+  width: max-content;
+}
+#file-list table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+#file-list th, #file-list td {
+  border: 1px solid #aaa;
+  padding: 6px 12px;
+  text-align: center;
+}

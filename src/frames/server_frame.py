@@ -64,17 +64,19 @@ class ServerFrame(BaseFrame):
         )
         self.status_entry.pack(side="left", padx=0, pady=8)
         self._update_status()
-
+        '''
         ttk.Button(self.main_frame, text="Help", command=lambda: webbrowser.open(f"file://{help_path}"), width=6).pack(
             side="right", padx=2
         )
+        
         ttk.Button(self.main_frame, text="Cache", command=self._on_cache, width=6).pack(
             side="right", padx=2
         )
+        '''
         self.server_btn = ttk.Button(
             self.main_frame, text="Start Server", command=self.toggle_server, width=10
         )
-        self.server_btn.pack(side="right", padx=2)
+        self.server_btn.pack(side="left", padx=2)
 
     def _update_status(self):
         if getattr(self._server_manager, "is_running", False):

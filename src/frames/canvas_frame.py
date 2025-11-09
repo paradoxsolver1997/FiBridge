@@ -32,14 +32,14 @@ class CanvasFrame(BaseFrame):
             button_row,
             text="Save as Bitmap",
             command=lambda: self.sig.save(
-                save_image_as_bitmap, cropped=self.crop_var.get()
+                save_image_as_bitmap, transparent=self.transparent_var.get(), cropped=self.crop_var.get()
             ),
         ).pack(side="left", pady=4)
         ttk.Button(
             button_row,
             text="Save as Vector",
             command=lambda: self.sig.save(
-                save_image_as_vector, cropped=self.crop_var.get()
+                save_image_as_vector, transparent=self.transparent_var.get(), cropped=self.crop_var.get()
             ),
         ).pack(side="left", pady=4)
 
@@ -86,7 +86,10 @@ class CanvasFrame(BaseFrame):
         x_scroll.pack(side="bottom", fill="x")
         # Create canvas and bind scrollbars
         self.sig = SignatureCanvas(
-            canvas_subframe, width=self.canvas_width, height=self.canvas_height
+            canvas_subframe, 
+            width=self.canvas_width, 
+            height=self.canvas_height,
+            log_func=self.log
         )
         self.sig.pack(side="top", fill="both", expand=True)
         self.sig.start()

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const table = document.createElement('table');
         table.className = 'table table-bordered';
         const thead = document.createElement('thead');
-        thead.innerHTML = '<tr><th></th><th>File Name</th><th>Extension</th><th>Size</th><th>Date</th></tr>';
+        thead.innerHTML = '<table><tr><th></th><th>File Name</th><th>Extension</th><th>Size</th><th>Date</th></tr></table>';
         table.appendChild(thead);
         const tbody = document.createElement('tbody');
         files.forEach(file => {

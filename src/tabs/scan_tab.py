@@ -53,7 +53,7 @@ class ScanTab(BaseTab):
         if not metadata or metadata.get("type") != "text":
             self.log(logging.WARNING, "No valid text metadata found.")
             return
-        file_name = metadata.get("info")
+        file_name = metadata.get("info")[0]
         if not file_name:
             self.log(logging.WARNING, "draw metadata is missing file name!")
             return

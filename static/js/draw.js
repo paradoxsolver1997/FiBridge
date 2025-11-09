@@ -39,8 +39,7 @@ window.onload = function() {
   }
 
   function clear() {
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0,0,canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
   function getTouchPos(e) {

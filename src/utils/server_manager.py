@@ -75,11 +75,11 @@ class ServerManager:
             if len(saved) == 1:
                 ext = os.path.splitext(saved[0])[1].lower()
                 if ext == ".txt":
-                    self.latest_metadata = {"type": "text", "info": saved[0]}
+                    self.latest_metadata = {"type": "text", "info": [saved[0]]}
                 elif ext == ".png":
-                    self.latest_metadata = {"type": "draw", "info": saved[0]}
+                    self.latest_metadata = {"type": "draw", "info": [saved[0]]}
                 else:
-                    self.latest_metadata = {"type": "file", "info": saved}
+                    self.latest_metadata = {"type": "file", "info": [saved[0]]}
             elif len(saved) > 1:
                 self.latest_metadata = {"type": "files", "info": saved}
             else:

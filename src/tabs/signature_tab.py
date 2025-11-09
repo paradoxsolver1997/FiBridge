@@ -92,14 +92,11 @@ class SignatureTab(BaseTab):
         )
         self.canvas_frame_popup.pack(fill="both", expand=True)
         # Initialize size, scaling, and scrollbars
-
+        self.log(logging.INFO, "Canvas created.")
+        self.canvas_frame_popup.reset_scale()
         if img:
             try:
-                tk_img = ImageTk.PhotoImage(img)
-                self.canvas_frame_popup.sig._loaded_img = tk_img  # Prevent GC
-                self.canvas_frame_popup.sig.canvas.create_image(
-                    0, 0, anchor="nw", image=tk_img
-                )
+                self.canvas_frame_popup.sig.view_in_canvas(img)
                 self.log(logging.INFO, f"Rendering successful in popup canvas")
             except Exception as e:
                 self.log(logging.ERROR, f"Failed to render draw image: {e}")
@@ -125,7 +122,7 @@ class SignatureTab(BaseTab):
         if not metadata or metadata.get("type") != "draw":
             self.log(logging.WARNING, "No valid draw metadata found.")
             return
-        draw_file = metadata.get("info")
+        draw_file = metadata.get("info")[0]
         if not draw_file:
             self.log(logging.WARNING, "Draw metadata is missing filename.")
             return

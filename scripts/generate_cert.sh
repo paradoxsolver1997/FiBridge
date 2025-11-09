@@ -7,6 +7,6 @@ openssl x509 -req -days 365 -in cert.csr -signkey key.pem -out cert.pem
 rm -f cert.csr
 
 echo "Certificates generated: key.pem, cert.pem"
-mv key.pem ../configs/
-mv cert.pem ../configs/
+mv key.pem configs/
+mv cert.pem configs/
 read -p "Press enter to continue..."
