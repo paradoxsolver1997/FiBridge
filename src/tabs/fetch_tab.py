@@ -3,7 +3,6 @@ from tkinter import ttk, filedialog
 from src.tabs.base_tab import BaseTab
 import os
 import logging
-import json
 
 from src.frames.title_frame import TitleFrame
 
@@ -35,7 +34,7 @@ class FetchTab(BaseTab):
         self.title_frame.pack(fill="x", padx=(8, 8), pady=(8, 4))
 
         output_frame = ttk.LabelFrame(
-            self, text="Follow these steps:", style="Bold.TLabelframe"
+            self, text="Fetch Files from Phone:", style="Bold.TLabelframe"
         )
         output_frame.pack(fill="x", padx=(8, 8), pady=(4, 4))
         """

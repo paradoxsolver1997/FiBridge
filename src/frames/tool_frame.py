@@ -1,6 +1,6 @@
 from tkinter import ttk
 from src.frames.base_frame import BaseFrame
-from src.lib.converter import check_tool
+from src.libs.converter import check_tool
 
 
 class ToolFrame(BaseFrame):

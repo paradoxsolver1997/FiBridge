@@ -32,7 +32,7 @@ class ShareTab(BaseTab):
         self.title_frame.pack(fill="x", padx=(8, 8), pady=(8, 4))
 
         input_frame = ttk.LabelFrame(
-            self, text="Option 1: Send Files to Phone", style="Bold.TLabelframe"
+            self, text="Send Files to Phone", style="Bold.TLabelframe"
         )
         input_frame.pack(fill="x", padx=(8, 8), pady=(0, 8))
         # Input files

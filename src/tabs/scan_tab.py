@@ -1,9 +1,10 @@
 import os
 import tkinter as tk
 from tkinter import ttk
+import logging
+
 from src.tabs.base_tab import BaseTab
 from src.frames.title_frame import TitleFrame
-import logging
 from src.frames.text_frame import TextFrame
 
 
@@ -37,7 +38,7 @@ class ScanTab(BaseTab):
         row_3 = ttk.Frame(remote_frame)
         row_3.pack(side="top", fill="x", padx=8, pady=(4, 4))
         ttk.Label(row_3, text="Step 3: Click").pack(side="left", padx=0, pady=(0, 4))
-        ttk.Button(row_3, text="Fetch Scan", command=lambda: self.pull_text()).pack(
+        ttk.Button(row_3, text="Fetch Text", command=lambda: self.pull_text()).pack(
             side="left", padx=(2, 2), pady=(0, 4)
         )
         ttk.Label(row_3, text="to view the scanned text in a popup.").pack(

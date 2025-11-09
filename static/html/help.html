@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help - FiBridge</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8f8f8; color: #222; margin: 0; padding: 2em; }
+        h2 { color: #2a7ae2; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.2em; margin-top: 2em; }
+        h3 { color: #808080; padding-bottom: 0em; margin-top: 1em; margin-bottom: 0.5em;}
+        ul { margin-left: 1.5em; }
+        li { margin-bottom: 0.5em; }
+        .section { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #eee; padding: 1.2em 1.5em; margin-bottom: 2em; }
+    </style>
+</head>
+<body>
+    <h1>FiBridge Help</h1>
+        <b>FiBridge</b> is a local web application for secure and convenient file and data sharing between PC and mobile devices. Just run this app on PC and use your phone's default browser to connect. No need to install any other apps.
+
+        This guide covers the main features and usage scenarios.
+
+
+    <h2>Key Features</h2>
+        FiBridge can transfer text, (drawing) images, and files between your PC and mobile device in a fast and convenient way. The main features include:
+        <h4>1. Text transfer via QR code scanning</h4>
+        <ul>
+            <li><b>QR Code Generator:</b> Generate QR codes for text, URLs, or files to share with mobile devices.</li>
+            <li><b>Remote Scan:</b> Use your phone to scan QR codes and send the result back to your PC.</li>
+        </ul>
+        <h4>2. Image transfer via drawing or signing on mobile device</h4>
+        <ul>
+            <li><b>Draw & Sign:</b> Draw or sign on your device and transfer the image to your PC.</li>
+        </ul>
+        <h4>3. File transfer between PC and mobile device</h4>
+        <ul>
+            <li><b>File Share:</b> Transfer files from your PC to your mobile device via browser.</li>
+            <li><b>File Fetch:</b> Transfer files from your mobile device to your PC.</li>
+        </ul>
+    
+
+    <h2 id="server-setup">Fundamental Step: Server Setup</h2>
+        <p>Most of the functions rely on a properly configured server. Follow these steps to set up the server:</p>
+        <h3>Step 1: Generate self-signed certificates</h3>
+        <p>The server connection relies on the https protocol, which requires a valid SSL certificate. Follow these steps to generate a self-signed certificate:</p>
+        <ul>
+            <li>Open a terminal or command prompt.</li>
+            <li>Navigate to the root directory, run <code>.\scripts\generate_cert.bat</code>. On Linux, use the <code>./scripts/generate_cert.sh</code> script.</li>
+            <li>Navigate to the <code>configs</code> directory, confirm the existence of <code>cert.pem</code> and <code>key.pem</code>.</li>
+        </ul>
+        <h3>Step 2: Configure server settings</h3>
+        <ul>
+            <li>Make sure your phone is connected to the same network as this computer.</li>
+            <li>Open the app, in the "Server Setup" section, confirm the IP is correct and the port is available.</li>
+            <li>Confirm your firewall settings allow traffic on the chosen port.</li>
+        </ul>
+        <h3>Step 3: Start the server and connect</h3>
+        <ul>
+            <li>Click "Start Server" button, wait until the flag turns to a green "ON". This also shows a QR code of the server URL in the Preview area.</li>
+            <li>On your phone, scan this QR code. Click the recognized link to open it in your phone's browser.</li>
+            <li>Alternatively, you can manually enter the server URL in your phone's browser without scanning the QR code.</li>
+            <li>Since you are using a self-signed SSL signature, your browser may show a warning that the website is unsafe. You can safely ignore this warning since the app and the server completely runs on your own PC. Click "ignore" if applicable. In many cases, you have to carefully seek the "Advanced" option which allows you to "Proceed Anyway".</li>
+            <li>If successful, your browser will show a page with function menus. You can now use the app to transfer files, images, and text between your devices.</li>
+        </ul>
+        <h3>Step 4: Stop the server after use</h3>
+        <ul>
+            <li>After finishing your transfer tasks, remember to click "Stop Server" button in the app to stop the server to avoid occupying the port.</li>
+            <li>Close the browser tab on your phone to avoid potential security risks (e.g., disclosure of privacy).</li>
+        </ul>
+
+    <h2>QR Code Generator</h2>
+        <p>Generate QR codes for text, URLs, or files to share with mobile devices.</p>
+        <h3>Step 1: QR Settings</h3>
+        <ul>
+            <li>Enter QR contents</li>
+            <li>Browse for image as optional embedding logo</li>
+            <li>Enter QR size (300x300 by default)</li>
+            <li>Enter max logo ratio (only when logo is used)</li>
+        </ul>
+        <h3>Step 2: Generate and Save</h3>
+        <ul>
+            <li>Click "Generate" to show the QR code in the preview area.</li>
+            <li>Click "Save as Bitmap" to save the QR code image.</li>
+            <li>Alternatively, click "Save as Vector" to save a vector version of the QR code.</li>
+            <li>This function also allows sending the QR coded text to your mobile device by scanning the code.</li>
+        </ul>
+
+    <h2>Remote Scan</h2>
+        <p>Use your phone to scan QR codes and send the result back to your PC.</p>
+        <h3>Connection Setup:</h3>
+        <ul>
+            <li><b>Step 1.</b> <a href="#server-setup"><b>Setup and start the server.</b></a></li>
+            <li><b>Step 2.</b> Connect your phone to the server by scanning the popup URL QR code in the <b>Preview</b> area. Click the recognized link to open it in your phone's browser.</li>
+            <li>Alternatively, you can manually enter the server URL in your phone's browser without scanning the QR code.</li>
+            <li><b>Remote Scan</b> provides two ways to send text to PC, via QR scan or direct text sending.</li>
+        </ul>
+        <h3>Option 1. QR Scan:</h3>
+            <ul>
+                <li><b>Step 3.</b> On your phone, in the opened menu page of the browser, select <b>Remote Scan (QR Scan)</b>.</li>
+                <li><b>Step 4.</b> In the opened page, click <b>Start Scan</b> to activate the camera and scan the target QR code. If successful, the scanned result will appear on the web page.</li>
+                <li><b>Step 5.</b> Click <b>Push</b> to send the scanned result back to your PC.</li>
+            </ul>
+        <h3>Option 2. Text Sending</h3>
+            <ul>
+                <li><b>Step 3.</b> On your phone, in the opened menu page of the browser, select <b>Remote Scan (Text Sending)</b>.</li>
+                <li><b>Step 4.</b> Enter text in the text box. Alternatively, click "Paste from Clipboard" to paste the copied text.</li>
+                <li><b>Step 5.</b> Click <b>Push</b> to send the text back to your PC.</li>
+            </ul>
+        <h3>Fetch Text</h3>
+            <ul>
+                <li><b>Step 6.</b> Back on your PC, in the <b>Remote Scan</b> tab, click <b>Fetch Text</b> to retrieve the latest text sent from your phone in a popup window.</li>
+                <li><b>Step 7.</b> Click "Save" to save the text if needed, or click "Copy to Clipboard" if need to paste it somewhere else.</li>
+            </ul>
+    
+    <h2>Draw & Sign</h2>
+        <p>Draw or sign on your device and transfer the image to your PC.</p>
+        <h3>Option 1. Draw on local canvas:</h3>
+            <ul>
+                <li><b>Step 1.</b> Switch to <b>Draw & Sign</b> tab, enter canvas size. This sets the size of both the local and remote canvases.</li>
+                <li><b>Step 2.</b> Click <b>Create Local Canvas</b> to open a popup canvas.</li>
+                <li><b>Step 3.</b> In the popup canvas, use mouse to draw or sign. Use <b>Control</b> panel to zoom, scale, clear, or close the canvas if needed.</li>
+                <li><b>Step 4.</b> Check <b>Transparent background</b> if the drawing needs a transparent background.</li>
+                <li><b>Step 5.</b> Check <b>Cropping</b> if you wish to automatically crop the drawing to avoid blank edges before saving.</li>
+                <li><b>Step 6.</b> Click <b>Save as Bitmap</b> or <b>Save as Vector</b> accordingly.</li>
+            </ul>
+        <h3>Option 2. Draw on remote canvas:</h3>
+            <ul>
+                <li><b>Step 1.</b> Switch to <b>Draw & Sign</b> tab, enter canvas size. This sets the size of both the local and remote canvases.</li>
+                <li><b>Step 2.</b> <a href="#server-setup"><b>Setup and start the server.</b></a></li>
+                <li><b>Step 3.</b> Connect your phone to the server by scanning the popup URL QR code in the <b>Preview</b> area. Click the recognized link to open it in your phone's browser.</li>
+                <li>Alternatively, you can manually enter the server URL in your phone's browser without scanning the QR code.</li>
+                <li><b>Step 4.</b> On your phone, in the opened menu page of the browser, select <b>Remote Draw</b> to open the remote canvas in the browser.</li>
+                <li><b>Step 5.</b> Use your finger or a stylus to create your drawing on the remote canvas.</li>
+                <li><b>Step 6.</b> When finished, click <b>Push</b> to send the drawing result back to your PC.</li>
+                <li><b>Step 7.</b> Back to PC, in the <b>Draw & Sign</b> tab,click <b>Fetch Image</b> to open the drawing in a local canvas.</li>
+                <li><b>Step 8.</b> In the popup local canvas, make any adjustments if need or directly save it by following the same steps in <b>Option 1</b>.</li>
+            </ul>
+    
+    
+    <h2>File Share</h2>
+        <p>Transfer files from your PC to your mobile device via browser.</p>
+        <ul>
+            <li><b>Step 1.</b> Switch to <b>File Share</b> tab, browser files to transfer.</li>
+            <li><b>Step 2.</b> <a href="#server-setup"><b>Setup and start the server.</b></a></li>
+            <li><b>Step 3.</b> Connect your phone to the server by scanning the popup URL QR code in the <b>Preview</b> area. Click the recognized link to open it in your phone's browser.</li>
+            <li>Alternatively, you can manually enter the server URL in your phone's browser without scanning the QR code.</li>
+            <li><b>Step 4.</b> On your phone, in the opened menu page of the browser, select <b>File Share</b> to open the file share page.</li>
+            <li><b>Step 5.</b> In the opened page, select the files of interest and click "Save" button to save them.</li>
+        </ul>
+    <h2>File Fetch</h2>
+        <p>Transfer files from your mobile device to your PC.</p>
+        <ul>
+            <li><b>Step 1.</b> <a href="#server-setup"><b>Setup and start the server.</b></a></li>
+            <li><b>Step 2.</b> Connect your phone to the server by scanning the popup URL QR code in the <b>Preview</b> area. Click the recognized link to open it in your phone's browser.</li>
+            <li>Alternatively, you can manually enter the server URL in your phone's browser without scanning the QR code.</li>
+            <li><b>Step 3.</b> On your phone, in the opened menu page of the browser, select <b>File Fetch</b> to open the file fetch page.</li>
+            <li><b>Step 4.</b> In the opened page, Click "Browse Files..." button to select the files to transfer.</li>
+            <li><b>Step 5.</b> After validating the files, click "Push" to send the files to your PC.</li>
+            <li><b>Step 6.</b> Back to your PC, switch to <b>File Fetch</b> tab, click "Fetch Files" to save the files in the desired folder.</li>
+        </ul>
+
+        
+
+    <h2>Troubleshooting</h2>
+    <p>There are several reasons that may cause the failure of data transfer.</p>
+    <h3>IP/port/firewall issues</h3>
+        <ul>
+            <li>If the server fails to start, check if the IP points to the correct device and the selected port is not occupied.</li>
+            <li>Ensure that your firewall settings allow incoming connections on the selected port.</li>
+            <li>Confirm that both devices are on the same network.</li>
+        </ul>
+    <h3>Browser issues</h3>
+        <p>Some phone browsers may have limitations or specific settings that affect the transfer process.</p>
+        <ul>
+            <li>On Windows, both Chrome and Edge are supported.</li>
+            <li>On iPhone, Safari is supported.</li>
+            <li>On Android, Firefox is supported. However, Chrome may cause access issues.</li>
+        </ul>
+        <p>It is very likely that your will encounter the "Unsafe website" warning. Make sure your browser is set to allow access to the server's self-signed certificate.</p>
+
+    <h2>Security Notes</h2>
+    <p>The transfer via FiBridge is secured in a variety of ways:</p>
+    <ul>
+        <li>All data are transferred only within your local network and are not uploaded to any cloud server.</li>    
+        <li>The transfer is encrypted using HTTPS (SSL) to ensure privacy and security. So the transfer is also safe in public networks.</li>
+        <li>Every transfer follows a share-fetch two-step procedure. You need to first manually send text, drawing, or files from your source device, and then manually fetch them on your target device. Direct access from one device to another is prohibited. This prevents unexpected exposure of your data.</li>
+    </ul>
+    <p>To ensure additional safety, take the following precautions:</p>
+    <ul>
+        <li>Only ignore "Unsafe website" warnings for your own local server with self-signed certificates. Do not ignore such warnings for unknown websites.</li>
+        <li>Never share your self-signed certificate private key. In this way, others will not be able to impersonate your server.</li>    
+        <li>Always use HTTPS (SSL) to ensure privacy and security. In this way, no one else can intercept your data.</li>
+        <li>Do not share the server URL code with strangers or expose it in public. This helps to prevent unauthorized access to your server. Unauthorized access may lead to data theft or data faking.</li>
+        <li>After finishing your transfer tasks, remember to stop the server to avoid occupying the port. Also, close the browser tab on your phone to avoid potential security risks.</li>
+    </ul>
+
+    <h2>Credits</h2>
+        <ul>
+            <li>Developed by <a href="https://github.com/paradoxsolver1997/">Paradoxsolver</a></li>
+            <li>MIT License</li>
+            <li>Powered by Flask, html5-qrcode, and more</li>
+            <li>Project: <a href="https://github.com/paradoxsolver1997/FiBridge">https://github.com/paradoxsolver1997/FiBridge</a></li>
+        </ul>
+</body>
+</html>

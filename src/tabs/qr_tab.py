@@ -3,8 +3,8 @@ import tkinter as tk
 from tkinter import ttk, filedialog
 import logging
 
-from src.lib.qr import generate_qr_image
-from src.lib.save_image import save_image_as_bitmap, save_image_as_vector
+from src.libs.qr import generate_qr_image
+from src.libs.save_image import save_image_as_bitmap, save_image_as_vector
 from src.tabs.base_tab import BaseTab
 from src.frames.labeled_validated_entry import LabeledValidatedEntry
 from src.frames.title_frame import TitleFrame

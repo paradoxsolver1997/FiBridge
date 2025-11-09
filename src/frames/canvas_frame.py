@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from src.utils.signature_canvas import SignatureCanvas
 from src.frames.base_frame import BaseFrame
-from src.lib.save_image import save_image_as_vector, save_image_as_bitmap
+from src.libs.save_image import save_image_as_vector, save_image_as_bitmap
 
 
 class CanvasFrame(BaseFrame):

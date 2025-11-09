@@ -131,12 +131,12 @@ class App(tk.Tk):
         current_tab_id = self.nb.select()
         current_tab_obj = self.nb.nametowidget(current_tab_id)
 
-        if current_tab_obj is self.qr_tab:
+        if current_tab_obj in (self.qr_tab, self.abt_tab):
             self.server_frame.deactivate()
         else:
             self.server_frame.activate()
 
-        if current_tab_obj in (self.scan_tab, self.shr_tab, self.ftc_tab):
+        if current_tab_obj in (self.scan_tab, self.shr_tab, self.ftc_tab, self.abt_tab):
             self.tool_frame.deactivate()
         else:
             self.tool_frame.activate()

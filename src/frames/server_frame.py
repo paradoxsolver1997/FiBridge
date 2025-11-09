@@ -7,7 +7,7 @@ import logging
 from src.utils.server_manager import ServerManager
 from src.frames.labeled_validated_entry import LabeledValidatedEntry
 from src.frames.base_frame import BaseFrame
-from src.lib.qr import generate_qr_image
+from src.libs.qr import generate_qr_image
 
 help_path = os.path.abspath(
             os.path.join(os.path.dirname(os.path.dirname(__file__)), "static", "help.html")

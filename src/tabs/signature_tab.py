@@ -73,7 +73,7 @@ class SignatureTab(BaseTab):
         row_3 = ttk.Frame(remote_frame)
         row_3.pack(side="top", fill="x", padx=8, pady=(4, 4))
         ttk.Label(row_3, text="3. Click").pack(side="left", padx=0, pady=(0, 4))
-        ttk.Button(row_3, text="Fetch Draw", command=lambda: self.pull_draw()).pack(
+        ttk.Button(row_3, text="Fetch Image", command=lambda: self.pull_draw()).pack(
             side="left", padx=(2, 2), pady=(0, 4)
         )
         ttk.Label(row_3, text="to retrieve the latest drawing.").pack(
@@ -100,9 +100,9 @@ class SignatureTab(BaseTab):
                 self.canvas_frame_popup.sig.canvas.create_image(
                     0, 0, anchor="nw", image=tk_img
                 )
-                self.log(logging.INFO, f"成功在popup canvas渲染")
+                self.log(logging.INFO, f"Rendering successful in popup canvas")
             except Exception as e:
-                self.log(logging.ERROR, f"渲染draw图片失败: {e}")
+                self.log(logging.ERROR, f"Failed to render draw image: {e}")
 
     def set_canvas_geometry(self):
         main_x = self.winfo_toplevel().winfo_x()

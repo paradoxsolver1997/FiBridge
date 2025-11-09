@@ -2,7 +2,7 @@
 from tkinter import filedialog
 import tempfile
 import os
-from src.lib import converter
+from src.libs import converter
 from PIL import Image
 
 def save_image_as_vector(img: Image.Image):
