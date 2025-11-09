@@ -173,10 +173,13 @@ class ServerManager:
                 data = self.api_file_download(tab.get_file_list(), filename)
                 if data:
                     from flask import Response
+                    import urllib.parse
 
                     response = Response(data, mimetype="application/octet-stream")
+                    # RFC 5987 encoding for non-ASCII filenames
+                    filename_ascii = filename.encode('ascii', 'ignore').decode() or 'download'
                     response.headers["Content-Disposition"] = (
-                        f'attachment; filename="{filename}"'
+                        f"attachment; filename=\"{filename_ascii}\"; filename*=UTF-8''{urllib.parse.quote(filename)}"
                     )
                     return response
             return jsonify({"error": "File not found"}), 404

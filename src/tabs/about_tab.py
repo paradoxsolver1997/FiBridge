@@ -7,7 +7,7 @@ from src.frames.title_frame import TitleFrame
 import tkinter as tk
 
 help_path = os.path.abspath(
-            os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "static", "help.html")
+            os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "static", "html", "help.html")
         )
 
 
@@ -34,8 +34,16 @@ class AboutTab(BaseTab):
 
         self.info_frame = ttk.LabelFrame(self, text="Information", style="Bold.TLabelframe")
         self.info_frame.pack(fill="x", padx=(8, 8), pady=(4, 4))
-        self.author = ttk.Label(self.info_frame, text="Author: Paradoxsolver")
-        self.author.pack(side="top", anchor="w", padx=8, pady=(4, 0))
+        
+        self.author_row = ttk.Frame(self.info_frame)
+        self.author_row.pack(side="top", fill="x", padx=8, pady=(2, 2))
+        self.author = ttk.Label(self.author_row, text="Author:")
+        self.author.pack(side="left", anchor="w", padx=0, pady=(0, 0))
+        self.author_link = ttk.Label(self.author_row, text="Paradoxsolver", foreground="blue", cursor="hand2")
+        self.author_link.pack(side="left", anchor="w", padx=0, pady=(0, 0))
+        self.render_hyperlink_label(self.author_link)
+        self.author_link.bind("<Button-1>", lambda e: webbrowser.open("https://github.com/paradoxsolver1997"))
+
         
         self.license_row = ttk.Frame(self.info_frame)
         self.license_row.pack(side="top", fill="x", padx=8, pady=(2, 2))

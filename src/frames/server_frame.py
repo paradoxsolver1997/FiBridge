@@ -10,7 +10,7 @@ from src.frames.base_frame import BaseFrame
 from src.libs.qr import generate_qr_image
 
 help_path = os.path.abspath(
-            os.path.join(os.path.dirname(os.path.dirname(__file__)), "static", "help.html")
+            os.path.join(os.path.dirname(os.path.dirname(__file__)), "static", "html", "help.html")
         )
 
 
