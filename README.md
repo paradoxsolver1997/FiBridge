@@ -1,6 +1,6 @@
 # FiBridge 📱🌉💻
 
-![License](https://img.shields.io/github/license/paradoxsolver1997/FiBridge)
+![License](https://img.shields.io/github/license/paradoxsolver1997/ImBridge)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)
 ![Flask >=2.0](https://img.shields.io/badge/flask-%3E=2.0-lightgrey.svg)
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
