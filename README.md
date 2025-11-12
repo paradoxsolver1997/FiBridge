@@ -1,13 +1,11 @@
 # FiBridge 📱🌉💻
 
-<p align="left">
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License"></a>
-  <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+">
-  <img src="https://img.shields.io/badge/flask-%3E=2.0-lightgrey.svg" alt="Flask">
-  <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style: black">
-  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Linux-informational.svg" alt="Platform">
-  <img src="https://img.shields.io/badge/SSL-self--signed-blue.svg" alt="Self-signed SSL">
-</p>
+![License](https://img.shields.io/github/license/paradoxsolver1997/FiBridge)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)
+![Flask >=2.0](https://img.shields.io/badge/flask-%3E=2.0-lightgrey.svg)
+![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
+![Platform: Windows | Linux](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-informational.svg)
+![Self-signed SSL](https://img.shields.io/badge/SSL-self--signed-blue.svg)
 
 FiBridge is a **local** web application for secure and convenient file and data sharing between PC and mobile devices, only using the default browser. 🔗📱💻
 
