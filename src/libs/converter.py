@@ -59,9 +59,17 @@ def check_tool(tool_key: str) -> bool:
     Check if a single tool is available, returning True/False.
     """
     
-    tool_list_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'configs', 'tool_list.json')
-    with open(tool_list_path, 'r', encoding='utf-8') as f:
-        tool_list = json.load(f)
+    tool_list = [
+        {
+            "key": "potrace",
+            "display": "Potrace",
+            "executables": ["potrace"],
+            "config_key": "potrace_path",
+            "type": "exe"
+        }
+    ]
+
+
     tool = next((t for t in tool_list if t["key"] == tool_key), None)
     if tool:
         if tool["type"] == "exe" and tool["executables"]:

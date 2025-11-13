@@ -70,9 +70,9 @@ class Logger:
     def get_logger(self):
         return self.logger
 
-    def log(self, level, msg, messagebox_flag=False, messagebox_title=None):
+    def log(self, level, msg, messagebox_flag=True, messagebox_title=None):
         # Only show message box for ERROR and above levels
-        if level >= logging.ERROR and messagebox_flag:
+        if level == logging.ERROR and messagebox_flag:
             messagebox.showerror(messagebox_title or "Error", str(msg))
         elif level == logging.WARNING and messagebox_flag:
             messagebox.showwarning(messagebox_title or "Warning", str(msg))

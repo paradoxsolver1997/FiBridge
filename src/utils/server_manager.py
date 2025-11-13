@@ -29,8 +29,8 @@ class ServerManager:
         self._srv = None
         self._thread = None
         # SSL certificate path
-        self.cert_path = os.path.join(self.BASEDIR, "configs", "cert.pem")
-        self.key_path = os.path.join(self.BASEDIR, "configs", "key.pem")
+        self.cert_path = os.path.join(self.BASEDIR, "cert.pem")
+        self.key_path = os.path.join(self.BASEDIR, "key.pem")
         self.is_running = False
 
     def _create_app(self):

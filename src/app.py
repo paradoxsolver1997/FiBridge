@@ -4,6 +4,8 @@ import tkinter.font as tkfont
 from PIL import Image, ImageTk
 import logging
 import shutil, os
+import sys
+from tkinter import messagebox
 
 from src.tabs.qr_tab import QRTab
 from src.tabs.signature_tab import SignatureTab
@@ -49,6 +51,7 @@ class App(tk.Tk):
         # Bind window close event, clear cache on normal close
         self.protocol("WM_DELETE_WINDOW", self._on_app_exit)
         self.build_content()
+        self.check_ssl_certificates()
 
     def build_content(self):
         # Main frame, divided into upper and lower parts, using grid for layout
@@ -186,3 +189,24 @@ class App(tk.Tk):
 
     def log(self, level, msg):
         self.logger.log(level, msg)
+
+
+    def check_ssl_certificates(self):
+        # Use the directory of this file for configs
+        cert_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)))
+        cert_path = os.path.join(cert_dir, 'cert.pem')
+        key_path = os.path.join(cert_dir, 'key.pem')
+        if not (os.path.exists(cert_path) and os.path.exists(key_path)):
+            msg = (
+                "SSL certificate files not found in " + cert_dir + ".\n"
+                "HTTPS features will NOT work.\n\n"
+                "Follow 'ReadMe' instruction to generate cert.pem and key.pem before starting FiBridge."
+            )
+            try:
+                self.log(logging.WARNING, "FiBridge - Certificate Missing: " + msg)
+            except Exception:
+                print(msg)
+            # Do NOT exit, just warn the user
+
+
+

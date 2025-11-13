@@ -78,7 +78,7 @@ python main.py
 
 The remote scan requires HTTPS protocol to access cameras. To enable HTTPS (recommended for security):
 
-1. Generate a self-signed certificate using the provided script:
+1. Generate a self-signed certificate using the provided script. In the root folder:
    - On Windows:
      ```bat
      scripts\generate_cert.bat
@@ -87,7 +87,7 @@ The remote scan requires HTTPS protocol to access cameras. To enable HTTPS (reco
      ```bash
      bash scripts/generate_cert.sh
      ```
-2. The generated `key.pem` and `cert.pem` will be placed in the `configs/` directory. 📁
+2. The generated `key.pem` and `cert.pem` will be placed in the root directory. 📁
 3. Update your Flask app configuration to use these certificate files for SSL. 🔒
 
 ### Installing Potrace
